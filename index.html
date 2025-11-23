@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitehouse Innovators NoteHub</title>
+<style>
+/* RESET & BASE */
+* { box-sizing:border-box; margin:0; padding:0; font-family: Arial, sans-serif;}
+body { background:#f0f4f8; color:#333; overflow-x:hidden;}
+.hidden { display:none; transition: all 0.5s ease; }
+
+/* LOGIN */
+#loginScreen{
+    height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column;
+    background: linear-gradient(135deg,#667eea,#764ba2); color:white; text-align:center;
+}
+#loginScreen h2{ margin-bottom:20px; }
+#loginScreen input{
+    padding:12px; border-radius:6px; border:none; outline:none;
+}
+#loginScreen button{
+    padding:12px; border-radius:6px; border:none;
+    background:#ff7e5f; color:white; font-weight:bold; cursor:pointer; transition:0.3s;
+}
+#loginScreen button:hover{ background:#feb47b; }
+
+/* NAVBAR */
+nav{
+    background: linear-gradient(90deg,#667eea,#764ba2); display:flex; justify-content:center; gap:30px;
+    padding:15px 0; position:sticky; top:0; z-index:10;
+}
+nav a{
+    color:white; text-decoration:none; font-weight:bold; position:relative; transition:0.3s;
+}
+nav a::after{
+    content:''; position:absolute; width:0%; height:2px; bottom:-3px; left:0; background:#ff7e5f; transition:0.3s;
+}
+nav a:hover::after{ width:100%; }
+
+/* HERO BANNER */
+.hero{
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color:white; text-align:center; padding:60px 20px;
+    animation: gradientBG 6s ease infinite alternate;
+}
+.hero h1{ font-size:2em; margin-bottom:10px; animation:fadeIn 2s;}
+.hero h2{
+    font-size:1.5em; margin-bottom:20px; background: linear-gradient(90deg,#ff7e5f,#feb47b,#667eea);
+    -webkit-background-clip: text; color: transparent; animation:textAnim 4s ease infinite alternate;
+}
+.hero p{ font-size:1.2em; animation:fadeIn 2s 0.5s forwards; opacity:0; }
+@keyframes gradientBG{
+    0%{background:linear-gradient(135deg,#667eea,#764ba2);}
+    50%{background:linear-gradient(135deg,#764ba2,#667eea);}
+    100%{background:linear-gradient(135deg,#667eea,#764ba2);}
+}
+@keyframes fadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+@keyframes textAnim{ 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
+
+/* SECTIONS */
+section{ padding:40px 20px; transition: all 0.5s ease; min-height:70vh; }
+#home{ max-width:900px; margin:40px auto; text-align:center;}
+#home h2{ margin-bottom:20px; color:#667eea;}
+#home select, #home button{ padding:12px; margin:8px 0; width:200px; border-radius:6px; border:1px solid #ccc; }
+#home button{ background:#ff7e5f; color:white; border:none; cursor:pointer; transition:0.3s;}
+#home button:hover{ background:#feb47b; }
+
+/* SOCIAL BUTTONS */
+.social-btns{ display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin:20px 0; }
+.social-btn{ padding:15px 25px; border-radius:8px; color:white; font-weight:bold; text-decoration:none; transition:0.3s; }
+.social-btn.facebook{ background:#3b5998; }
+.social-btn.facebook:hover{ background:#2d4373; }
+.social-btn.instagram{ background:#e1306c; }
+.social-btn.instagram:hover{ background:#c13584; }
+.social-btn.tiktok{ background:#010101; }
+.social-btn.tiktok:hover{ background:#333; }
+
+/* SEMESTER BUTTONS */
+.semester-btn{
+    display:block; width:200px; padding:12px; margin:10px auto; background:#667eea; color:white;
+    border-radius:6px; text-align:center; text-decoration:none; transition:0.3s;
+}
+.semester-btn:hover{ background:#5a67d8; }
+
+/* MEMBER GRID */
+.member-grid{
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:20px; justify-items:center;
+}
+.member-card{
+    background:#fff; border-radius:12px; padding:15px; box-shadow:0 0 10px rgba(0,0,0,0.1);
+    text-align:center; transition:0.3s; opacity:0; animation:fadeInCard 0.5s forwards;
+}
+.member-card img{ width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px; transition: transform 0.3s; }
+.member-card:hover{ transform:translateY(-5px) scale(1.05); }
+.member-card p{ font-weight:bold; }
+@keyframes fadeInCard{ to{ opacity:1; } }
+
+/* ABOUT SECTION CLUB HEADER */
+.club-header{
+    display:flex; flex-direction:column; align-items:center; margin-bottom:30px;
+}
+.club-header img{ width:80px; height:80px; margin-bottom:15px; }
+.club-header p{ max-width:600px; text-align:center; font-size:1em; color:#555; }
+
+/* CONTACT */
+.contact-info{ max-width:600px; margin:20px auto; background:#fff; border-radius:12px; padding:30px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1); text-align:center;
+}
+.contact-info h3{ margin-bottom:20px; color:#667eea; }
+.contact-info p{ margin:10px 0; }
+.contact-logo{ display:flex; flex-direction:column; align-items:center; margin-bottom:20px; }
+.contact-logo img{ width:80px; height:80px; margin-bottom:10px; }
+
+/* FOOTER */
+footer{ background:#222; color:white; text-align:center; padding:15px; }
+
+/* PASSWORD EYE ICON */
+.password-container{
+    position:relative; width:250px;
+}
+.password-container span{
+    position:absolute; right:10px; top:50%; transform:translateY(-50%);
+    cursor:pointer; font-size:18px; color:#333;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){ nav{ flex-direction:column; gap:15px; } #home, .contact-info{ width:95%; padding:20px; } }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen" class="center">
+    <h2>Welcome to NoteHub</h2>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:20px;">
+        <!-- Username -->
+        <input id="username" type="text" placeholder="Enter Username" style="width:250px; padding:12px; border-radius:6px; border:none;">
+        
+        <!-- Password with Eye -->
+        <div class="password-container">
+            <input id="password" type="password" placeholder="Enter Password" style="width:250px; padding:12px; border-radius:6px; border:none; padding-right:35px;">
+            <span onclick="togglePassword()">👁️</span>
+        </div>
+
+        <button onclick="login()" style="width:250px;">Login</button>
+    </div>
+    <p style="margin-top:10px;">Provided by Whitehouse Innovators IT Club</p>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="hidden">
+    <a href="#" onclick="showSection('home')">HOME</a>
+    <a href="#" onclick="showSection('about')">ABOUT</a>
+    <a href="#" onclick="showSection('contact')">CONTACT</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hidden">
+    <div class="hero">
+        <h1>Himalayan Whitehouse International College</h1>
+        <h2>Welcome to Whitehouse Innovators IT Club</h2>
+        <p>Explore Courses, Members & More!</p>
+    </div>
+
+    <div class="social-btns">
+        <a href="https://facebook.com" target="_blank" class="social-btn facebook">Facebook</a>
+        <a href="https://instagram.com" target="_blank" class="social-btn instagram">Instagram</a>
+        <a href="https://tiktok.com" target="_blank" class="social-btn tiktok">TikTok</a>
+    </div>
+
+    <h2>Select Course</h2>
+    <select id="courseSelect" onchange="showSemesters()">
+        <option value="">-- Select Course --</option>
+        <option value="BIT">BIT</option>
+        <option value="BE">BE Computer</option>
+    </select>
+    <div id="semContainer"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="hidden">
+    <div class="club-header">
+        <img src="https://via.placeholder.com/80" alt="Club Logo">
+        <p>The Whitehouse Innovators IT Club is dedicated to fostering innovation, coding skills, and technology awareness among students. Join us to explore projects, events, and collaborative learning!</p>
+    </div>
+    <h2>Club Members</h2>
+    <div class="member-grid" id="memberGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="hidden">
+    <div class="contact-logo">
+        <img src="https://via.placeholder.com/80" alt="HWIC Logo">
+        <h3>HWIC</h3>
+    </div>
+    <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p><b>Email:</b> info@whitehouseinnovators.edu.np</p>
+        <p><b>Phone:</b> +977 9866102970</p>
+        <p><b>Address:</b> Himalayan Whitehouse International College, Putalisadak, Kathmandu</p>
+    </div>
+</section>
+
+<footer class="hidden" id="footer">Developed by Bhuwan Raj Pandey</footer>
+
+<script>
+// LOGIN
+function login(){
+    const user=document.getElementById("username").value;
+    const pass=document.getElementById("password").value;
+    if(user==="WhitehouseInnovators" && pass==="Innovatornotehub"){
+        document.getElementById("loginScreen").style.display="none";
+        document.getElementById("navbar").classList.remove("hidden");
+        document.getElementById("home").classList.remove("hidden");
+        document.getElementById("footer").classList.remove("hidden");
+        loadMembers();
+    } else { alert("Invalid Username or Password!"); }
+}
+
+// SHOW/HIDE PASSWORD
+function togglePassword(){
+    const passField = document.getElementById("password");
+    passField.type = passField.type === "password" ? "text" : "password";
+}
+
+// NAVIGATION
+function showSection(id){
+    ['home','about','contact'].forEach(sec=>document.getElementById(sec).classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+}
+
+// SEMESTERS
+function showSemesters(){
+    const container=document.getElementById("semContainer");
+    container.innerHTML="";
+    for(let i=1;i<=8;i++){
+        container.innerHTML+=`<a href="#" target="_blank" class="semester-btn">Semester ${i}</a>`;
+    }
+}
+
+// MEMBERS
+const members=[
+    {name:"President - John Doe", photo:"https://via.placeholder.com/100"},
+    {name:"Vice President - Jane Smith", photo:"https://via.placeholder.com/100"},
+    {name:"Member 1 - Alice", photo:"https://via.placeholder.com/100"},
+    {name:"Member 2 - Bob", photo:"https://via.placeholder.com/100"},
+    {name:"Member 3 - Charlie", photo:"https://via.placeholder.com/100"},
+    {name:"Member 4 - David", photo:"https://via.placeholder.com/100"},
+    {name:"Member 5 - Emma", photo:"https://via.placeholder.com/100"},
+    {name:"Member 6 - Frank", photo:"https://via.placeholder.com/100"},
+    {name:"Member 7 - Grace", photo:"https://via.placeholder.com/100"},
+    {name:"Member 8 - Henry", photo:"https://via.placeholder.com/100"},
+    {name:"Member 9 - Irene", photo:"https://via.placeholder.com/100"},
+    {name:"Member 10 - Jack", photo:"https://via.placeholder.com/100"},
+    {name:"Member 11 - Karen", photo:"https://via.placeholder.com/100"},
+    {name:"Member 12 - Liam", photo:"https://via.placeholder.com/100"},
+    {name:"Member 13 - Mona", photo:"https://via.placeholder.com/100"},
+    {name:"Member 14 - Nathan", photo:"https://via.placeholder.com/100"},
+    {name:"Member 15 - Olivia", photo:"https://via.placeholder.com/100"},
+    {name:"Member 16 - Peter", photo:"https://via.placeholder.com/100"},
+    {name:"Member 17 - Queenie", photo:"https://via.placeholder.com/100"},
+    {name:"Member 18 - Ryan", photo:"https://via.placeholder.com/100"},
+    {name:"Member 19 - Sophia", photo:"https://via.placeholder.com/100"},
+    {name:"Member 20 - Tom", photo:"https://via.placeholder.com/100"}
+];
+function loadMembers(){
+    const grid=document.getElementById("memberGrid");
+    grid.innerHTML="";
+    members.forEach(m=>{
+        const card=document.createElement("div");
+        card.className="member-card";
+        card.innerHTML=`<img src="${m.photo}" alt="${m.name}"><p>${m.name}</p>`;
+        grid.appendChild(card);
+    });
+}
+</script>
+
+</body>
+</html>
