@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whitehouse Innovators NoteHub</title>
+<title>Whitehouse Innovators Note Collection</title>
 <style>
 /* RESET & BASE */
 * { box-sizing:border-box; margin:0; padding:0; font-family: Arial, sans-serif;}
@@ -110,7 +110,7 @@ section{ padding:40px 20px; transition: all 0.5s ease; min-height:70vh; }
 .contact-info h3{ margin-bottom:20px; color:#667eea; }
 .contact-info p{ margin:10px 0; }
 .contact-logo{ display:flex; flex-direction:column; align-items:center; margin-bottom:20px; }
-.contact-logo img{ width:100px; height:80px; margin-bottom:10px; }
+.contact-logo img{ width:300px; height:100px; margin-bottom:10px; }
 
 /* FOOTER */
 footer{ background:#222; color:white; text-align:center; padding:15px; }
@@ -134,15 +134,11 @@ footer{ background:#222; color:white; text-align:center; padding:15px; }
 <div id="loginScreen" class="center">
     <h2>Welcome to NoteHub</h2>
     <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:20px;">
-        <!-- Username -->
         <input id="username" type="text" placeholder="Enter Username" style="width:250px; padding:12px; border-radius:6px; border:none;">
-        
-        <!-- Password with Eye -->
         <div class="password-container">
             <input id="password" type="password" placeholder="Enter Password" style="width:250px; padding:12px; border-radius:6px; border:none; padding-right:35px;">
             <span onclick="togglePassword()">👁️</span>
         </div>
-
         <button onclick="login()" style="width:250px;">Login</button>
     </div>
     <p style="margin-top:10px;">Provided by Whitehouse Innovators IT Club</p>
@@ -153,6 +149,7 @@ footer{ background:#222; color:white; text-align:center; padding:15px; }
     <a href="#" onclick="showSection('home')">HOME</a>
     <a href="#" onclick="showSection('about')">ABOUT</a>
     <a href="#" onclick="showSection('contact')">CONTACT</a>
+    <a href="./event.html" onclick="showSection('Events')">EVENTS</a>
 </nav>
 
 <!-- HOME -->
@@ -173,7 +170,7 @@ footer{ background:#222; color:white; text-align:center; padding:15px; }
     <select id="courseSelect" onchange="showSemesters()">
         <option value="">-- Select Course --</option>
         <option value="BIT">BIT</option>
-        <option value="BE">BE Computer</option>
+        <option value="BE">BE COMPUTER</option>
     </select>
     <div id="semContainer"></div>
 </section>
@@ -181,7 +178,7 @@ footer{ background:#222; color:white; text-align:center; padding:15px; }
 <!-- ABOUT -->
 <section id="about" class="hidden">
     <div class="club-header">
-        <img src="https://github.com/whitehouseinnovators/Notehub/blob/main/clublogo.png" alt="Club Logo">
+        <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/clublogo.png" alt="Club Logo">
         <p>The Whitehouse Innovators IT Club is dedicated to fostering innovation, coding skills, and technology awareness among students. Join us to explore projects, events, and collaborative learning!</p>
     </div>
     <h2>Club Members</h2>
@@ -191,12 +188,12 @@ footer{ background:#222; color:white; text-align:center; padding:15px; }
 <!-- CONTACT -->
 <section id="contact" class="hidden">
     <div class="contact-logo">
-        <img src="https://github.com/whitehouseinnovators/Notehub/blob/main/College%20logo.jpg" alt="HWIC Logo">
+        <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/College%20logo.jpg" alt="HWIC Logo">
         <h3>HWIC</h3>
     </div>
     <div class="contact-info">
         <h3>Contact Us</h3>
-        <p><b>Email:</b> info@whitehouseinnovators.edu.np</p>
+        <p><b>Email:</b>whitehouseinnovators@gmail.com</p>
         <p><b>Phone:</b> +977 9866102970</p>
         <p><b>Address:</b> Himalayan Whitehouse International College, Putalisadak, Kathmandu</p>
     </div>
@@ -233,27 +230,25 @@ function showSection(id){
 // DRIVE LINKS PER SEMESTER
 const driveLinks = {
     BIT: {
-        1: "https://drive.google.com/drive/folders/1oP6Rolh9-8xVmmaotxyU_Dqny9j8YdaHs?usp=sharing",
-        2: "https://drive.google.com/drive/folders/1d53urEcjUwPNF5gDtiy2GN7eCDrYbyYqm2?usp=sharing",
-        3: "https://drive.google.com/drive/folders/1pumXR8leu4JS7pRGlgCPxYTJZf1MS9tTnk?usp=sharing",
-        4: "https://drive.google.com/drive/folders/1PXEyvytr_DoGNdQQ-hfL2BH0wo6-vN_-?usp=sharing",
-        5: "https://drive.google.com/drive/folders/1FunI8jBQxxzQ-J0i400yTWg7yruOjle0?usp=sharing",
-        6: "https://drive.google.com/drive/folders/1bulYeffeE8ssBVI7LMgmgRDMQLLj0cM8ve?usp=sharing",
-        7: "https://drive.google.com/drive/folders/1-saVNn4wKKfh6YTwaxY8L13hRnBG2zsL?usp=sharing",
-        8: "https://drive.google.com/drive/folders/1pA-nLdvrCxBBWcG4tdxvuA_V9KiYpbHdnk?usp=sharing"
-    },
-    BE: {
-        1: "https://drive.google.com/drive/folders/1WlU_1eanr1NzSHuxstkUrv2GS5whS7wg?usp=sharing",
-        2: "https://drive.google.com/drive/folders/1xNtciFADEPEPxXC0SL5MFwQCgzN0cwPg?usp=sharing",
-        3: "https://drive.google.com/drive/folders/1TChc4foEJQopK07IxwGt2PaQo4BVFY8kt?usp=sharing",
-        4: "https://drive.google.com/drive/folders/13ayQuNUQBisHQzoMKVTj6tiwvyisavpv?usp=sharing",
-        5: "https://drive.google.com/drive/folders/1oyq_-lNLIdZOWVVmw1e6KpxpCNNN0EDd?usp=sharing",
-        6: "https://drive.google.com/drive/folders/12eriBX4NjlJ87D0WQiGilKbMBKYFlTNs6?usp=sharing",
-        7: "https://drive.google.com/drive/folders/1VbuJ3ynr-ddxBI2-J5_G8tIX_P_A24F-e?usp=sharing",
-        8: "https://drive.google.com/drive/folders/1HCsHNn-ASZekRg3R6bQwM-0oZAntKKAQ?usp=sharing"
-    }
-};
+    1:"https://drive.google.com/drive/folders/1oP6Rolh9-8xVmmaotxyU_Dqny9j8YdaHs?usp=sharing",
+    2:"https://drive.google.com/drive/folders/1d53urEcjUwPNF5gDtiy2GN7eCDrYbyYqm2?usp=sharing",
+    3:"https://drive.google.com/drive/folders/1pumXR8leu4JS7pRGlgCPxYTJZf1MS9tTnk?usp=sharing",
+    4:"https://drive.google.com/drive/folders/1PXEyvytr_DoGNdQQ-hfL2BH0wo6-vN_-?usp=sharing",
+    5:"https://drive.google.com/drive/folders/1FunI8jBQxxzQ-J0i400yTWg7yruOjle0?usp=sharing",
+    6:"https://drive.google.com/drive/folders/1bulYeffeE8ssBVI7LMgmgRDMQLLj0cM8ve?usp=sharing",
+    7:"https://drive.google.com/drive/folders/1-saVNn4wKKfh6YTwaxY8L13hRnBG2zsL?usp=sharing",
+    8:"https://drive.google.com/drive/folders/1pA-nLdvrCxBBWcG4tdxvuA_V9KiYpbHdnk?usp=sharing"},
 
+    BE: {
+    1:"https://drive.google.com/drive/folders/1WlU_1eanr1NzSHuxstkUrv2GS5whS7wg?usp=sharing",
+    2:"https://drive.google.com/drive/folders/1xNtciFADEPEPxXC0SL5MFwQCgzN0cwPg?usp=sharing",
+    3:"https://drive.google.com/drive/folders/1TChc4foEJQopK07IxwGt2PaQo4BVFY8kt?usp=sharing",
+    4:"https://drive.google.com/drive/folders/13ayQuNUQBisHQzoMKVTj6tiwvyisavpv?usp=sharing",
+    5:"https://drive.google.com/drive/folders/1oyq_-lNLIdZOWVVmw1e6KpxpCNNN0EDd?usp=sharing",
+    6:"https://drive.google.com/drive/folders/12eriBX4NjlJ87D0WQiGilKbMBKYFlTNs6?usp=sharing",
+    7:"https://drive.google.com/drive/folders/1VbuJ3ynr-ddxBI2-J5_G8tIX_P_A24F-e?usp=sharing",
+    8:"https://drive.google.com/drive/folders/1HCsHNn-ASZekRg3R6bQwM-0oZAntKKAQ?usp=sharing"}
+};
 
 // SEMESTERS
 function showSemesters(){
@@ -266,37 +261,36 @@ function showSemesters(){
         const a = document.createElement("a");
         a.className = "semester-btn";
         a.textContent = `Semester ${i}`;
-        a.href = driveLinks[course][i]; // link according to course & semester
-        a.target = "_blank"; // opens in new tab
+        a.href = driveLinks[course][i];
+        a.target = "_blank";
         container.appendChild(a);
     }
 }
 
 // MEMBERS
-const members=[
-    {name:"President - John Doe", photo:"https://via.placeholder.com/100"},
-    {name:"Vice President - Jane Smith", photo:"https://via.placeholder.com/100"},
-    {name:"Vice President - Alice", photo:"https://via.placeholder.com/100"},
+const members = [
+    {name:"President - Bibek Singh Bist", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Bibek%20Bist.HEIC"},
+    {name:"Vice President - Ragib Khyaju", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Ragib%20Khyazoo.jpeg"},
+    {name:"Vice President - Suyog Bhandari", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/suyog%20bhandari.png"},
     {name:"General Secretary - Bhuwan Raj Pandey", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Bhuwan.jpeg"},
-    {name:"Member 3 - Charlie", photo:"https://via.placeholder.com/100"},
-    {name:"Member 4 - David", photo:"https://via.placeholder.com/100"},
-    {name:"Member 5 - Emma", photo:"https://via.placeholder.com/100"},
-    {name:"Member 6 - Frank", photo:"https://via.placeholder.com/100"},
-    {name:"Member 7 - Grace", photo:"https://via.placeholder.com/100"},
-    {name:"Member 8 - Henry", photo:"https://via.placeholder.com/100"},
-    {name:"Member 9 - Irene", photo:"https://via.placeholder.com/100"},
-    {name:"Member 10 - Jack", photo:"https://via.placeholder.com/100"},
-    {name:"Member - Aakriti Shrestha", photo:"https://github.com/whitehouseinnovators/Notehub/blob/main/aakritishrestha.jpg"},
-    {name:"Member 12 - Liam", photo:"https://via.placeholder.com/100"},
-    {name:"Member 13 - Mona", photo:"https://via.placeholder.com/100"},
-    {name:"Member 14 - Nathan", photo:"https://via.placeholder.com/100"},
-    {name:"Member 15 - Olivia", photo:"https://via.placeholder.com/100"},
-    {name:"Member 16 - Peter", photo:"https://via.placeholder.com/100"},
-    {name:"Member 17 - Queenie", photo:"https://via.placeholder.com/100"},
-    {name:"Member - Rupak Basnet", photo:"https://github.com/whitehouseinnovators/Notehub/blob/main/aakritishrestha.jpg"},
-    {name:"Member 19 - Sophia", photo:"https://via.placeholder.com/100"},
-    {name:"Member 20 - Tom", photo:"https://via.placeholder.com/100"}
-];
+    {name:"Vice Secretary - Shreya Prajapati", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Shreya%20Prajapati.jpg"},
+    {name:"Treasurer - Pawan Budha", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/pawan%20budha.jpeg"},
+    {name:"Event Coordinator - Kishor Bohara", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Kishor%20Bohara.jpeg"},
+    {name:"Member  - Nishan Neupane", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/nishan%20neupane.jpeg"},
+    {name:"Member  - Hari Krishna Meheta", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Hari%20meheta.jpg"},
+    {name:"Member  - Bhumika Karki", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/bhumika.jpeg"},
+    {name:"Member  - Shreya Chhetri", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Shreya%20Chhetri.jpg"},
+    {name:"Member  - Dibyash Gelal", photo:"https://via.placeholder.com/100"},
+    {name:"Member  - Aakriti Shrestha", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/aakritishrestha.jpg"},
+    {name:"Member  - Sudikshya Rimal", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Sudikshya%20rimal.jpg"},
+    {name:"Member  - Aakriti Rai", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Aakriti%20Rai.jpeg"},
+    {name:"Member  - Anisha Gotame", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/anisha%20gotame.jpg"},
+    {name:"Member  - Rites Nekola", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/ritesnikoila.jpeg"},
+    {name:"Member  - Rizan ", photo:"https://via.placeholder.com/100"},
+    {name:"Member  - Rupak Basnet", photo:"https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/Rupak%20basnet.jpg"},
+    {name:"Member  - Sophia", photo:"https://via.placeholder.com/100"},
+    {name:"Member  - Tom", photo:"https://via.placeholder.com/100"} ];
+
 
 function loadMembers(){
     const grid=document.getElementById("memberGrid");
@@ -312,13 +306,3 @@ function loadMembers(){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

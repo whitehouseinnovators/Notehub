@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | WhiteHouse Innovators</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+        body {
+            background: linear-gradient(120deg, #101820, #1c1f26);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #00eaff;
+            animation: fadeDown 1.2s ease;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .events-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 25px;
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 234, 255, 0.3);
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #00eaff;
+            margin-bottom: 10px;
+        }
+
+        .event-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .event-place {
+            font-size: 0.85rem;
+            color: #eee;
+            opacity: 0.9;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .event-card:hover .event-img {
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(6px);
+        }
+
+        footer p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Whitehouse Innovators Events </h1>
+        <a href="./index.html" onclick="showSection('home')"><h3>HOME</h3></a>
+    </header>
+
+    <div class="events-container">
+        <div class="event-card">
+        <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/frontend%20design%20fest.jpeg" class="event-img" alt="Frontend Design Fest">
+        <div class="event-title">Frontend Design Fest</div>
+        <div class="event-desc">Showcasing front‑end design projects and UI/UX prototypes by students.</div>
+        <div class="event-place">📍 Himalayan WhiteHouse International College</div>
+        </div>
+
+
+        <div class="event-card">
+            <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/drone%20workshop.jpeg" class="event-img">
+            <div class="event-title">Drone Workshop 2025</div>
+            <div class="event-desc">
+                A gathering of innovators showcasing new technology ideas, prototypes, and solutions.
+            </div>
+            <div class="event-place">📍 Himalayan WhiteHouse International College</div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/event2.jpg" class="event-img">
+            <div class="event-title">AI & Robotics Workshop</div>
+            <div class="event-desc">
+                Hands-on workshop on robotics, automation, and real-time AI applications with demonstrations.
+            </div>
+            <div class="event-place">📍 Innovation Lab, Block B</div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/event3.jpg" class="event-img">
+            <div class="event-title">Cybersecurity Awareness Program</div>
+            <div class="event-desc">
+                Learn about ethical hacking, cyber threats, and online safety practices with live training.
+            </div>
+            <div class="event-place">📍 Auditorium Hall</div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/event4.jpg" class="event-img">
+            <div class="event-title">Entrepreneurship Meetup</div>
+            <div class="event-desc">
+                Meet rising entrepreneurs and learn how to build, grow, and pitch your startup effectively.
+            </div>
+            <div class="event-place">📍 Seminar Room 204</div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://raw.githubusercontent.com/whitehouseinnovators/Notehub/main/event5.jpg" class="event-img">
+            <div class="event-title">WhiteHouse Innovators Hackathon</div>
+            <div class="event-desc">
+                24-hour coding challenge to build smart, scalable, real-world solutions in teams.
+            </div>
+            <div class="event-place">📍 Main Hall, Block A</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 WhiteHouse Innovators | Powered by Creativity & Technology</p>
+    </footer>
+
+    <script>
+        // Staggered animation delay for cards
+        const cards = document.querySelectorAll('.event-card');
+        cards.forEach((card, i) => {
+            card.style.animationDelay = `${i * 0.15}s`;
+        });
+    </script>
+
+</body>
+</html>
